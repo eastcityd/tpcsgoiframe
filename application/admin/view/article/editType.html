@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>EC</title>
+    <link rel="icon" href="__ROOT__/static/admin/favicon.ico" type="image/ico">
+    <link href="__ROOT__/static/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__ROOT__/static/admin/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="__ROOT__/static/admin/css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid p-t-15">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <form id="add_form" action="addType" method="post" class="row">
+                        <div class="form-group col-md-12">
+                            <label for="type_name">类型名称</label>
+                            <input type="text" class="form-control" id="type_name" name="type_name" value=""
+                                   placeholder="请输入名称"/>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="type_description">类型描述</label>
+                            <textarea class="form-control" id="type_description" name="type_description" rows="5"
+                                      value=""
+                                      placeholder="描述"></textarea>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>类型图片</label>
+                            <div class="form-controls">
+
+                                <ul class="list-inline clearfix lyear-uploads-pic">
+                                    <li class="col-xs-4 col-sm-3 col-md-2">
+                                        <figure>
+                                            <img src="__ROOT__/static/admin/images/gallery/15.jpg" alt="图片一">
+                                            <figcaption>
+                                                <a class="btn btn-round btn-square btn-primary" href="#!"><i
+                                                        class="mdi mdi-eye"></i></a>
+                                                <a class="btn btn-round btn-square btn-danger" href="#!"><i
+                                                        class="mdi mdi-delete"></i></a>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                    <li class="col-xs-4 col-sm-3 col-md-2">
+                                        <figure>
+                                            <img src="__ROOT__/static/admin/images/gallery/16.jpg" alt="图片二">
+                                            <figcaption>
+                                                <a class="btn btn-round btn-square btn-primary" href="#!"><i
+                                                        class="mdi mdi-eye"></i></a>
+                                                <a class="btn btn-round btn-square btn-danger" href="#!"><i
+                                                        class="mdi mdi-delete"></i></a>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                    <li class="col-xs-4 col-sm-3 col-md-2">
+                                        <figure>
+                                            <img src="__ROOT__/static/admin/images/gallery/17.jpg" alt="图片三">
+                                            <figcaption>
+                                                <a class="btn btn-round btn-square btn-primary" href="#!"><i
+                                                        class="mdi mdi-eye"></i></a>
+                                                <a class="btn btn-round btn-square btn-danger" href="#!"><i
+                                                        class="mdi mdi-delete"></i></a>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                    <li class="col-xs-4 col-sm-3 col-md-2">
+                                        <a class="pic-add" id="add-pic-btn" href="#!" title="点击上传"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="sort">排序</label>
+                            <input type="text" class="form-control" id="sort" name="sort" value="0"/>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>状态</label>
+                            <div class="clearfix">
+                                <label class="lyear-radio radio-inline radio-primary">
+                                    <input type="radio" name="status" value="0"><span>禁用</span>
+                                </label>
+                                <label class="lyear-radio radio-inline radio-primary">
+                                    <input type="radio" name="status" value="1" checked><span>启用</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" onclick="addType()" class="btn btn-primary ajax-post">确 定
+                            </button>
+                            <button type="button" class="btn btn-default"
+                                    onclick="javascript:history.back(-1);return false;">返 回
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript" src="__ROOT__/static/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="__ROOT__/static/admin/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="__ROOT__/static/admin/js/main.min.js"></script>
+
+<script>
+    function addType() {
+        var formData = $("#add_form").serialize();
+        $.ajax({
+            type:"post",
+            url:"{:url('Article/addType')}",
+            data:formData,
+            success:function (data) {
+                $("iframe-content").append(data);
+            }
+        })
+    }
+</script>
+</body>
+</html>

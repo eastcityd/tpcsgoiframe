@@ -16,30 +16,12 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-toolbar clearfix">
-                    <form class="pull-right search-bar" method="get" action="#!" role="form">
-                        <div class="input-group">
-                            <div class="input-group-btn">
-                                <input type="hidden" name="search_field" id="search-field" value="title">
-                                <button class="btn btn-default dropdown-toggle" id="search-btn" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
-                                    类型名称 <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li> <a tabindex="-1" href="javascript:void(0)" data-field="title">类型名称</a> </li>
-                                    <li> <a tabindex="-1" href="javascript:void(0)" data-field="cat_name">类型ID</a> </li>
-                                </ul>
-                            </div>
-                            <input type="text" class="form-control" value="" name="keyword">
-                        </div>
-                    </form>
                     <div class="toolbar-btn-action">
                         <a class="btn btn-primary m-r-5" href="{:url('article/addType')}"><i class="mdi mdi-plus"></i> 新增</a>
-                        <a class="btn btn-success m-r-5" href="#!"><i class="mdi mdi-check"></i> 启用</a>
-                        <a class="btn btn-warning m-r-5" href="#!"><i class="mdi mdi-block-helper"></i> 禁用</a>
-                        <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
                     </div>
                 </div>
                 <div class="card-body">
-
+                    <form method="post" action="" role="form">
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -57,17 +39,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {foreach $list as $low}
+                            {foreach $list as $k => $v}
                             <tr>
                                 <td>
                                     <label class="lyear-checkbox checkbox-primary">
-                                        <input type="checkbox" name="ids[]" value="1"><span></span>
+                                        <input type="checkbox" name="id[]" value="1"><span></span>
                                     </label>
                                 </td>
-                                <td>{$low['id']}</td>
-                                <td>{$low['type_name']}</td>
-                                <td>{$low['type_description']}</td>
-                                <td>{$low['status']}</td>
+                                <td>{$v['id']}</td>
+                                <td>{$v['type_name']}</td>
+                                <td>{$v['type_description']}</td>
+                                <td>{$v['status']}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
@@ -80,7 +62,7 @@
                             </tbody>
                         </table>
                     </div>
-
+                    </form>
                 </div>
             </div>
         </div>
@@ -93,13 +75,7 @@
 <script type="text/javascript" src="__ROOT__/static/admin/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="__ROOT__/static/admin/js/main.min.js"></script>
 <script type="text/javascript">
-    $(function(){
-        $('.search-bar .dropdown-menu a').click(function() {
-            var field = $(this).data('field') || '';
-            $('#search-field').val(field);
-            $('#search-btn').html($(this).text() + ' <span class="caret"></span>');
-        });
-    });
+
 </script>
 </body>
 </html>

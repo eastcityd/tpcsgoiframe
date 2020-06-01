@@ -10,7 +10,7 @@ use think\Validate;
 class Article extends Model
 {
     //查询文章类型列表
-    public function getList()
+    public function getTypeList()
     {
         $list = Db::name('article_type')
             ->order('id')
@@ -65,7 +65,7 @@ class Article extends Model
         return true;
     }
 
-    //更新文章类型
+    //编辑文章类型
     public function updateType()
     {
 
